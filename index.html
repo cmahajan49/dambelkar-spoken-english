@@ -15,7 +15,7 @@
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
+  <!-- Top Announcement Bar (Hidden on Mobile for Clean Header) -->
   <div class="top-announcement-bar">
     <div class="container top-bar-flex">
       <div class="top-bar-left">
@@ -39,10 +39,10 @@
     </div>
   </div>
 
-  <!-- Main Navbar Header -->
+  <!-- Sticky Luxury Header -->
   <header class="navbar" id="navbar">
     <div class="container nav-wrapper">
-      <!-- Brand Logo -->
+      <!-- Left: Brand Logo -->
       <a href="#home" class="nav-logo">
         <div class="logo-symbol-box">
           <span class="logo-symbol">D</span>
@@ -53,19 +53,8 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="nav-links" id="navLinks">
-        <div class="mobile-drawer-header">
-          <div class="drawer-brand">
-            <span class="drawer-logo-badge">D</span>
-            <div>
-              <strong>DAMBELKARS</strong>
-              <small>Spoken English Classes</small>
-            </div>
-          </div>
-          <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">✕</button>
-        </div>
-
+      <!-- Desktop Navigation Links -->
+      <nav class="desktop-nav" id="desktopNav">
         <a href="#home" class="nav-item active">Home</a>
         <a href="#about" class="nav-item">About</a>
         <a href="#courses" class="nav-item">Courses</a>
@@ -76,71 +65,114 @@
         <a href="#testimonials" class="nav-item">Reviews</a>
         <a href="#faq" class="nav-item">FAQ</a>
         <a href="#contact" class="nav-item">Contact</a>
-
-        <!-- Mobile Drawer Action Buttons -->
-        <div class="mobile-drawer-actions">
-          <button type="button" class="btn btn-red btn-block open-demo-modal">
-            <span>🎁 Book Free Demo</span>
-          </button>
-          <div class="drawer-contact-row">
-            <a href="tel:+918055304008" class="btn btn-secondary btn-sm drawer-contact-btn">
-              <span>📞 Call 8055304008</span>
-            </a>
-            <a href="https://wa.me/918055304008" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-compact drawer-contact-btn">
-              <span>💬 WhatsApp</span>
-            </a>
-          </div>
-        </div>
       </nav>
 
-      <!-- Navbar Action Right Elements -->
+      <!-- Right: Action Icons & Hamburger -->
       <div class="nav-actions">
-        <!-- Compact WhatsApp Button -->
-        <a href="https://wa.me/918055304008?text=Hello%20Dambelkars%20Spoken%20English%20Classes,%20I%20am%20interested%20in%20enquiring%20about%20your%20courses." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-compact" title="WhatsApp Chat">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.796.815 3.182 0 5.767-2.587 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.748 0-3.385-.45-4.819-1.238l-7.181 1.882 1.916-6.996c-.88-1.487-1.396-3.224-1.396-5.08 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
-          <span class="btn-text-hide-mobile">WhatsApp</span>
+        <!-- WhatsApp Icon/Button -->
+        <a href="https://wa.me/918055304008?text=Hello%20Dambelkars%20Spoken%20English%20Classes,%20I%20am%20interested%20in%20enquiring%20about%20your%20courses." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-compact" title="WhatsApp Us" aria-label="WhatsApp Chat">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.815 2.796.815 3.182 0 5.767-2.587 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.514-4.486 10-10 10-1.748 0-3.385-.45-4.819-1.238l-7.181 1.882 1.916-6.996c-.88-1.487-1.396-3.224-1.396-5.08 0-5.514 4.486-10 10-10s10 4.486 10 10z"/></svg>
+          <span class="btn-text-desktop">WhatsApp</span>
         </a>
 
-        <!-- Neat Single-Line Red CTA -->
+        <!-- Desktop Book Demo CTA -->
         <button type="button" class="btn btn-red btn-header-cta open-demo-modal">
           <span>BOOK FREE DEMO</span>
         </button>
 
-        <!-- Mobile Hamburger Toggle -->
-        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <!-- Mobile Hamburger Toggle Button -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Backdrop Overlay -->
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <!-- =========================================================================
+       PROPER MOBILE NAVIGATION DRAWER & BACKDROP OVERLAY
+       ========================================================================= -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+    <div class="mobile-drawer" id="mobileDrawer">
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <div class="drawer-brand">
+          <div class="drawer-logo-badge">D</div>
+          <div class="drawer-brand-text">
+            <strong>DAMBELKARS</strong>
+            <span>SPOKEN ENGLISH CLASSES</span>
+          </div>
+        </div>
+        <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">✕</button>
+      </div>
 
-  <main>
+      <!-- Drawer Navigation Links -->
+      <nav class="drawer-nav" id="drawerNav">
+        <a href="#home" class="drawer-link active"><span class="drawer-icon">🏠</span> Home</a>
+        <a href="#about" class="drawer-link"><span class="drawer-icon">📖</span> About Us</a>
+        <a href="#courses" class="drawer-link"><span class="drawer-icon">🎓</span> Courses & Modules</a>
+        <a href="#why-us" class="drawer-link"><span class="drawer-icon">⭐</span> Why Choose Us</a>
+        <a href="#process" class="drawer-link"><span class="drawer-icon">🚀</span> Learning Process</a>
+        <a href="#branches" class="drawer-link"><span class="drawer-icon">📍</span> All Branches</a>
+        <a href="#gallery" class="drawer-link"><span class="drawer-icon">🖼️</span> Photo Gallery</a>
+        <a href="#testimonials" class="drawer-link"><span class="drawer-icon">💬</span> Student Reviews</a>
+        <a href="#faq" class="drawer-link"><span class="drawer-icon">❓</span> FAQ</a>
+        <a href="#contact" class="drawer-link"><span class="drawer-icon">📞</span> Contact & Location</a>
+      </nav>
+
+      <!-- Drawer Bottom Actions -->
+      <div class="drawer-footer">
+        <button type="button" class="btn btn-red btn-block open-demo-modal" id="drawerDemoBtn">
+          <span>🎁 BOOK FREE DEMO</span>
+        </button>
+        <div class="drawer-quick-contacts">
+          <a href="tel:+918055304008" class="drawer-contact-pill">
+            <span>📞 8055304008</span>
+          </a>
+          <a href="https://wa.me/918055304008" target="_blank" rel="noopener noreferrer" class="drawer-contact-pill wa-pill">
+            <span>💬 WhatsApp</span>
+          </a>
+        </div>
+        <p class="drawer-addr-note">Vikas Mitra Mandal Chowk, Karvenagar, Pune</p>
+      </div>
+    </div>
+  </div>
+
+  <main id="mainContent">
     <!-- Hero Section -->
     <section class="hero-section" id="home">
-      <div class="hero-bg-glow"></div>
       <div class="container hero-container">
         <div class="hero-text-col">
+          <!-- Small Badge -->
           <div class="hero-badge">
             <span class="badge-dot"></span>
-            <span>AN ISO 9001:2008 CERTIFIED INSTITUTE</span>
+            <span>DAMBELKARS • ISO 9001:2008 CERTIFIED</span>
           </div>
 
+          <!-- Large Heading -->
           <h1 class="hero-headline">
-            <span class="brand-title">DAMBELKARS</span>
-            <span class="brand-subtitle">SPOKEN ENGLISH CLASSES</span>
-            <span class="highlight-quote">"SPEAK ENGLISH WITH CONFIDENCE."</span>
+            <span class="hero-headline-main">SPEAK ENGLISH</span>
+            <span class="hero-headline-accent">WITH CONFIDENCE.</span>
           </h1>
 
+          <!-- Short Readable Description -->
           <p class="hero-subtext">
-            Improve your communication, build confidence, and take your English to the next level. Learn through practical, interactive sessions engineered to turn hesitation into natural, fluent speech.
+            Improve your communication, build confidence, and take your English to the next level. Practical, interactive, and personalized sessions for students, professionals, and homemakers.
           </p>
 
-          <!-- USPs Pill Bar -->
+          <!-- Action Buttons -->
+          <div class="hero-btn-group">
+            <button type="button" class="btn btn-red btn-lg open-demo-modal shadow-red hero-btn-main">
+              <span>BOOK FREE DEMO</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+            <a href="#courses" class="btn btn-secondary btn-lg hero-btn-sub">
+              <span>EXPLORE COURSES</span>
+            </a>
+          </div>
+
+          <!-- USPs Bar -->
           <div class="hero-usps-list">
             <div class="usp-pill">
               <span class="usp-icon">✓</span>
@@ -152,73 +184,55 @@
             </div>
             <div class="usp-pill">
               <span class="usp-icon">✓</span>
-              <span>From Zero (ABCD) to Fluency</span>
-            </div>
-          </div>
-
-          <div class="hero-btn-group">
-            <button type="button" class="btn btn-red btn-lg open-demo-modal shadow-red">
-              <span>BOOK FREE DEMO</span>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            </button>
-            <a href="#courses" class="btn btn-secondary btn-lg">
-              <span>EXPLORE COURSES</span>
-            </a>
-          </div>
-
-          <!-- Hero Metrics -->
-          <div class="hero-metrics-bar">
-            <div class="metric-item">
-              <div class="metric-num-wrap">
-                <span class="metric-val counter" data-target="19">19</span><span class="metric-plus">+</span>
-              </div>
-              <span class="metric-lbl">Years Experience</span>
-            </div>
-            <div class="metric-sep"></div>
-            <div class="metric-item">
-              <div class="metric-num-wrap">
-                <span class="metric-val counter" data-target="50">50</span><span class="metric-plus">K+</span>
-              </div>
-              <span class="metric-lbl">Students Trained</span>
-            </div>
-            <div class="metric-sep"></div>
-            <div class="metric-item">
-              <div class="metric-num-wrap">
-                <span class="metric-val counter" data-target="12">12</span><span class="metric-plus">+</span>
-              </div>
-              <span class="metric-lbl">Maharashtra Centers</span>
-            </div>
-            <div class="metric-sep"></div>
-            <div class="metric-item">
-              <div class="metric-num-wrap">
-                <span class="metric-val">100%</span>
-              </div>
-              <span class="metric-lbl">Practical Speaking</span>
+              <span>Basic (ABCD) to Advanced</span>
             </div>
           </div>
         </div>
 
+        <!-- Hero Media Col (Positioned cleanly on mobile) -->
         <div class="hero-media-col">
           <div class="hero-image-frame">
             <img src="dambelkarspoken/dambelkarspoken/Screenshot_2026_0817_203312.png" alt="Dambelkars Spoken English Interactive Classroom" class="hero-main-img" />
             
-            <!-- Floating Badge: Awards -->
             <div class="floating-stat-card card-top">
               <div class="stat-icon-circle">🏆</div>
               <div>
                 <strong>Maharashtra Udyojakata</strong>
-                <span>Puraskar 2023 Award Winner</span>
+                <span>Puraskar 2023 Winner</span>
               </div>
             </div>
 
-            <!-- Floating Badge: Daily Practice -->
             <div class="floating-stat-card card-bottom">
               <div class="stat-icon-circle">🗣️</div>
               <div>
                 <strong>Daily Speaking Practice</strong>
-                <span>Fun, Role-Plays & Confidence</span>
+                <span>Fun & Interactive Learning</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section (Clean 2x2 Grid on Mobile) -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-number"><span class="counter" data-target="19">19</span>+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number"><span class="counter" data-target="50">50</span>K+</span>
+            <span class="stat-label">Students Trained</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number"><span class="counter" data-target="12">12</span>+</span>
+            <span class="stat-label">Centers in MH</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Practical Speaking</span>
           </div>
         </div>
       </div>
@@ -232,21 +246,21 @@
             <div class="val-icon-box">🛡️</div>
             <div class="val-text">
               <h4>100% Fee Refund Guarantee</h4>
-              <p>इंग्रजी बोलता न आल्यास पूर्ण फी परत. We stand behind our proven, result-driven training.</p>
+              <p>इंग्रजी बोलता न आल्यास पूर्ण फी परत. We stand behind our proven training.</p>
             </div>
           </div>
           <div class="val-card highlight-card">
             <div class="val-icon-box">♾️</div>
             <div class="val-text">
-              <h4>Life Time FREE Membership</h4>
-              <p>एकदा फी भरली कि जीवन भर क्लासेस मोफत. Continue practicing anytime at zero extra charge.</p>
+              <h4>Lifetime Free Membership</h4>
+              <p>एकदा फी भरली कि जीवन भर क्लासेस मोफत. Revise and practice anytime at ₹0 extra fee.</p>
             </div>
           </div>
           <div class="val-card">
             <div class="val-icon-box">🌱</div>
             <div class="val-text">
               <h4>All Backgrounds Welcome</h4>
-              <p>From complete beginner ABCD to corporate professionals, school students and homemakers.</p>
+              <p>From complete beginner ABCD to corporate professionals and school students.</p>
             </div>
           </div>
         </div>
@@ -257,9 +271,10 @@
     <section class="about-section" id="about">
       <div class="container">
         <div class="about-grid">
+          <!-- Mobile: Image -->
           <div class="about-image-wrapper">
             <div class="about-image-card">
-              <img src="dambelkarspoken/dambelkarspoken/Screenshot_20260817_203112.jpg" alt="Dambelkars Educational Poster" class="about-img" />
+              <img src="dambelkarspoken/dambelkarspoken/Screenshot_20260817_203112.jpg" alt="Dambelkars Educational Poster" class="about-img" loading="lazy" />
             </div>
             <div class="about-badge-overlay">
               <span class="badge-num">19+</span>
@@ -267,6 +282,7 @@
             </div>
           </div>
 
+          <!-- Mobile: Content -->
           <div class="about-content">
             <div class="section-tag">ABOUT DAMBELKARS</div>
             <h2 class="section-heading">
@@ -276,7 +292,7 @@
               At <strong>Dambelkars Spoken English Classes</strong>, we believe English is not just a language—it is the key to unlocking new professional opportunities, personal growth, and boundless self-confidence.
             </p>
             <p class="about-desc">
-              Whether you are a vernacular medium student looking to speak without hesitation, a college graduate preparing for corporate job interviews, or a working professional aiming to lead meetings fluently, our structured step-by-step methodology ensures rapid and lasting mastery.
+              Whether you are a vernacular medium student looking to speak without hesitation, a college graduate preparing for job interviews, or a professional aiming to lead meetings, our step-by-step methodology ensures rapid progress.
             </p>
 
             <div class="about-checklist">
@@ -291,7 +307,7 @@
                 <span class="check-box">✓</span>
                 <div class="check-text">
                   <strong>Interactive Sessions</strong>
-                  <p>Daily group discussions, extempore speeches, and role-plays with mentors.</p>
+                  <p>Group discussions, extempore speeches, and role-plays with mentors.</p>
                 </div>
               </div>
               <div class="check-item">
@@ -312,7 +328,6 @@
 
             <div class="about-cta-row">
               <button type="button" class="btn btn-red open-demo-modal">Get Started With A Free Demo</button>
-              <a href="#why-us" class="btn btn-secondary">Learn Why We Are #1</a>
             </div>
           </div>
         </div>
@@ -334,7 +349,7 @@
             <div class="course-icon-box">🗣️</div>
             <h3 class="course-title">SPOKEN ENGLISH</h3>
             <p class="course-desc">
-              Master daily conversational English, build robust sentence structure, eliminate hesitation, and speak fluently in any everyday scenario.
+              Master daily conversational English, build robust sentence structure, eliminate hesitation, and speak fluently in everyday scenarios.
             </p>
             <ul class="course-perks">
               <li>Daily Conversation Drills</li>
@@ -349,7 +364,7 @@
             <div class="course-icon-box">💡</div>
             <h3 class="course-title">COMMUNICATION SKILLS</h3>
             <p class="course-desc">
-              Develop persuasive communication, articulation, public speaking, effective listening, and corporate presentation techniques.
+              Develop persuasive communication, articulation, public speaking, active listening, and corporate presentation techniques.
             </p>
             <ul class="course-perks">
               <li>Public Speaking & Presentation</li>
@@ -441,7 +456,7 @@
       </div>
     </section>
 
-    <!-- Learning Process Section -->
+    <!-- Learning Process Section (Clean Mobile Vertical Flow) -->
     <section class="process-section" id="process">
       <div class="container">
         <div class="section-title-wrap text-center">
@@ -582,7 +597,7 @@
       </div>
     </section>
 
-    <!-- Gallery Section (with Lightbox) -->
+    <!-- Gallery Section (Clean 2-Column Mobile Grid) -->
     <section class="gallery-section" id="gallery">
       <div class="container">
         <div class="section-title-wrap text-center">
@@ -596,7 +611,7 @@
             <img src="dambelkarspoken/dambelkarspoken/Screenshot_2026_0817_203312.png" alt="Classroom Discussion" loading="lazy" />
             <div class="gallery-hover-overlay">
               <span class="gallery-zoom-icon">🔍</span>
-              <span class="gallery-caption-text">Interactive Classroom Practice</span>
+              <span class="gallery-caption-text">Classroom Practice</span>
             </div>
           </div>
 
@@ -604,7 +619,7 @@
             <img src="dambelkarspoken/dambelkarspoken/Screenshot_20260817_203047.jpg" alt="Award Certificate" loading="lazy" />
             <div class="gallery-hover-overlay">
               <span class="gallery-zoom-icon">🔍</span>
-              <span class="gallery-caption-text">Maharashtra Udyojakata Puraskar 2023</span>
+              <span class="gallery-caption-text">Maharashtra Award</span>
             </div>
           </div>
 
@@ -612,7 +627,7 @@
             <img src="dambelkarspoken/dambelkarspoken/Screenshot_20260817_203211.jpg" alt="Institute Branch" loading="lazy" />
             <div class="gallery-hover-overlay">
               <span class="gallery-zoom-icon">🔍</span>
-              <span class="gallery-caption-text">Certified Learning Centers</span>
+              <span class="gallery-caption-text">Certified Centers</span>
             </div>
           </div>
 
@@ -620,7 +635,7 @@
             <img src="dambelkarspoken/dambelkarspoken/Screenshot_20260817_203650.jpg" alt="Achievements and Honors" loading="lazy" />
             <div class="gallery-hover-overlay">
               <span class="gallery-zoom-icon">🔍</span>
-              <span class="gallery-caption-text">Teaching Excellence Honors</span>
+              <span class="gallery-caption-text">Teaching Excellence</span>
             </div>
           </div>
 
@@ -628,7 +643,7 @@
             <img src="dambelkarspoken/dambelkarspoken/Screenshot_2026_0817_203231.png" alt="Values and Habits" loading="lazy" />
             <div class="gallery-hover-overlay">
               <span class="gallery-zoom-icon">🔍</span>
-              <span class="gallery-caption-text">Values & Habit Development</span>
+              <span class="gallery-caption-text">Positive Values</span>
             </div>
           </div>
 
@@ -636,7 +651,7 @@
             <img src="dambelkarspoken/dambelkarspoken/dambelkar-s-spoken-english-classes--narhe-gaon-pune-language-classes-for-english-conversation-gi39c.jpg" alt="Pune Branch Center" loading="lazy" />
             <div class="gallery-hover-overlay">
               <span class="gallery-zoom-icon">🔍</span>
-              <span class="gallery-caption-text">Pune Branch Center</span>
+              <span class="gallery-caption-text">Pune Center</span>
             </div>
           </div>
         </div>
@@ -678,7 +693,7 @@
               <div class="student-avatar">PS</div>
               <div>
                 <strong>Pooja Shinde</strong>
-                <span>Final Year Engineering Student</span>
+                <span>Engineering Student</span>
               </div>
             </div>
           </div>
@@ -780,8 +795,8 @@
         </div>
 
         <div class="contact-grid-layout">
-          <!-- Left Column: Location & Info -->
-          <div class="location-details-card">
+          <!-- Left: Location Details Card -->
+          <div class="location-details-card" id="location">
             <div class="card-top-header">
               <span class="loc-badge">OFFICIAL HEAD OFFICE</span>
               <h3>Dambelkars Spoken English Classes</h3>
@@ -859,11 +874,11 @@
             </div>
           </div>
 
-          <!-- Right Column: Demo Contact Form with Strict 10-Digit Phone Validation -->
+          <!-- Right: Mobile-Optimized Contact Form with Strict 10-Digit Validation -->
           <div class="contact-form-card">
             <div class="form-title-group">
               <h3>Book Your Free Demo</h3>
-              <p>Fill in your details below. This is a frontend demo and data is validated instantly in your browser.</p>
+              <p>Fill in your details below. Validated locally in your browser.</p>
             </div>
 
             <form id="contactDemoForm" class="contact-demo-form" novalidate>
@@ -885,7 +900,7 @@
               <div class="form-field-group">
                 <label for="userPhone">
                   Mobile Number <span class="req">*</span>
-                  <span class="input-subnote">Only numbers • Exactly 10 digits</span>
+                  <span class="input-subnote">10 digits only</span>
                 </label>
                 <div class="phone-box-wrapper">
                   <span class="phone-country-code">+91</span>
@@ -921,6 +936,17 @@
                 <span class="field-error-msg" id="emailErrorMsg"></span>
               </div>
 
+              <!-- Course Interest Field -->
+              <div class="form-field-group">
+                <label for="userCourseSelect">Course Interested In</label>
+                <select id="userCourseSelect" name="userCourseSelect" class="form-input">
+                  <option value="Spoken English">Spoken English</option>
+                  <option value="Communication Skills">Communication Skills</option>
+                  <option value="Interview Preparation">Interview Preparation</option>
+                  <option value="Personality Development">Personality Development</option>
+                </select>
+              </div>
+
               <!-- Message Field -->
               <div class="form-field-group">
                 <label for="userMsg">Message (Optional)</label>
@@ -929,7 +955,7 @@
                   name="userMsg" 
                   class="form-input" 
                   rows="3" 
-                  placeholder="Tell us about your learning goals or preferred batch timing..."
+                  placeholder="Tell us about your learning goals or batch timing..."
                 ></textarea>
               </div>
 
@@ -1006,20 +1032,20 @@
   </footer>
 
   <!-- =========================================================================
-       STICKY MOBILE BOTTOM BAR (Optimized for Smartphone Users)
+       STICKY MOBILE BOTTOM BAR (60-70px Height, Safe Inset)
        ========================================================================= -->
-  <div class="mobile-bottom-bar">
+  <div class="mobile-bottom-bar" id="mobileBottomBar">
     <a href="tel:+918055304008" class="mob-bottom-btn mob-btn-call">
       <span class="mob-btn-icon">📞</span>
-      <span class="mob-btn-label">Call Now</span>
+      <span class="mob-btn-label">CALL NOW</span>
     </a>
     <a href="https://wa.me/918055304008?text=Hello%20Dambelkars%20Spoken%20English%20Classes,%20I%20want%20information%20about%20your%20courses." target="_blank" rel="noopener noreferrer" class="mob-bottom-btn mob-btn-wa">
       <span class="mob-btn-icon">💬</span>
-      <span class="mob-btn-label">WhatsApp</span>
+      <span class="mob-btn-label">WHATSAPP</span>
     </a>
     <button type="button" class="mob-bottom-btn mob-btn-demo open-demo-modal">
       <span class="mob-btn-icon">🎁</span>
-      <span class="mob-btn-label">Book Demo</span>
+      <span class="mob-btn-label">BOOK DEMO</span>
     </button>
   </div>
 

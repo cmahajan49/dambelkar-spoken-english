@@ -8,24 +8,30 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
-  // 1. Mobile Drawer Navigation (Side Drawer + Backdrop)
+  // 1. Mobile Drawer Navigation (80-85% Width Drawer + Dark Backdrop)
   // --------------------------------------------------------------------------
   const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const navLinks = document.getElementById('navLinks');
+  const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
   const drawerCloseBtn = document.getElementById('drawerCloseBtn');
-  const drawerBackdrop = document.getElementById('drawerBackdrop');
-  const navItems = document.querySelectorAll('.nav-item');
+  const drawerNavLinks = document.querySelectorAll('.drawer-link');
+  const desktopNavLinks = document.querySelectorAll('.desktop-nav .nav-item');
 
   function openDrawer() {
-    if (navLinks) navLinks.classList.add('active');
-    if (drawerBackdrop) drawerBackdrop.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+      if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'true');
+    }
   }
 
   function closeDrawer() {
-    if (navLinks) navLinks.classList.remove('active');
-    if (drawerBackdrop) drawerBackdrop.classList.remove('active');
-    document.body.style.overflow = '';
+    if (mobileDrawerOverlay) {
+      mobileDrawerOverlay.classList.remove('active');
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
   }
 
   if (hamburgerBtn) {
@@ -36,18 +42,24 @@ document.addEventListener('DOMContentLoaded', () => {
     drawerCloseBtn.addEventListener('click', closeDrawer);
   }
 
-  if (drawerBackdrop) {
-    drawerBackdrop.addEventListener('click', closeDrawer);
+  if (mobileDrawerOverlay) {
+    mobileDrawerOverlay.addEventListener('click', (e) => {
+      // Close only if backdrop itself was clicked (not drawer content)
+      if (e.target === mobileDrawerOverlay) {
+        closeDrawer();
+      }
+    });
   }
 
-  navItems.forEach(item => {
-    item.addEventListener('click', () => {
+  // Close drawer automatically on link click
+  drawerNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
       closeDrawer();
     });
   });
 
   // --------------------------------------------------------------------------
-  // 2. Active Navigation Link on Scroll & Back-to-Top Button
+  // 2. Active Nav Link on Scroll & Back-to-Top Button
   // --------------------------------------------------------------------------
   const sections = document.querySelectorAll('section[id]');
   const backToTopBtn = document.getElementById('backToTopBtn');
@@ -60,13 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const top = section.offsetTop;
       const height = section.offsetHeight;
       const id = section.getAttribute('id');
-      const targetNav = document.querySelector(`.nav-links a[href="#${id}"]`);
-
-      if (targetNav) {
-        if (scrollPosition >= top && scrollPosition < top + height) {
-          navItems.forEach(link => link.classList.remove('active'));
-          targetNav.classList.add('active');
-        }
+      
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        // Desktop nav
+        desktopNavLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+        // Drawer nav
+        drawerNavLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
       }
     });
 
@@ -154,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
     hasAnimatedCounters = true;
   }
 
-  // Trigger counters on load
   setTimeout(animateCounters, 300);
 
   // --------------------------------------------------------------------------
@@ -180,13 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --------------------------------------------------------------------------
   // 6. Strict 10-Digit Mobile Number Validation Handler (Reusable)
-  // Requirements:
-  // - Accepts ONLY digits (0-9)
-  // - Exactly 10 digits
-  // - Rejects letters, special characters, spaces, punctuation
-  // - Rejects more than 10 digits
-  // - Real-time feedback message and counter (X/10)
-  // - Form cannot submit until exactly 10 digits are entered
   // --------------------------------------------------------------------------
   function setupStrictPhoneInput(inputElement, counterElement, statusTextElement) {
     if (!inputElement) return;
@@ -347,11 +354,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(modal) {
     if (modal) modal.classList.add('active');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
   }
 
   function closeModal(modal) {
     if (modal) modal.classList.remove('active');
     document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   // Open Demo Modal Triggers
@@ -359,7 +368,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       closeDrawer();
-      // If course modal was open, close it first
       if (courseModalOverlay) closeModal(courseModalOverlay);
       openModal(demoModalOverlay);
     });
@@ -414,7 +422,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (courseDetailDuration) courseDetailDuration.textContent = courseDuration;
       if (courseDetailLevel) courseDetailLevel.textContent = courseLevel;
 
-      // Pre-select course in demo modal
       if (modalCourseSelect) {
         modalCourseSelect.value = courseName;
       }
