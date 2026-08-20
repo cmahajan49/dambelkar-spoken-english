@@ -2032,8 +2032,24 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 1rem;
   }
 
+  .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+
   .nav-logo {
-    transform: translateY(8px);
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .mobile-bottom-bar {
@@ -2049,11 +2065,28 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .btn-whatsapp-compact {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     padding: 0;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
     border-radius: 50%;
+  }
+
+  .btn-whatsapp-compact svg {
+    display: block;
+  }
+
+  .hamburger-btn {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
   }
 
   .btn-header-cta {
