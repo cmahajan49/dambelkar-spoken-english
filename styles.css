@@ -2032,6 +2032,10 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 1rem;
   }
 
+  .nav-logo {
+    transform: translateY(8px);
+  }
+
   .mobile-bottom-bar {
     display: flex;
   }
